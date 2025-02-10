@@ -2,7 +2,7 @@
 export default {
     data() {
 	return {
-		arr: [1, 2, 3],
+		obj: {x: 1, y: 2, z: 3},
 	}
 }
 }
@@ -11,6 +11,6 @@ export default {
 <template>
 	<div>
 		
-		<p> {{ arr [0] + arr [1]+ arr [2]}}</p>
+		<p> {{ obj.x + obj.y + obj.z}}</p>
 	</div>
 </template>
