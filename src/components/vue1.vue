@@ -1,24 +1,15 @@
 <template> 
     <div>
-        <input v-model.number="num" type="number" placeholder="Введите число">
-        <button @click="showSquare">Показать квадрат числа</button>
+        <button @click="showSquare(2)">Показать квадрат 2</button>
+        <button @click="showSquare(3)">Показать квадрат 3</button>
     </div>
 </template>
 
 <script>
 export default {
-    data() {
-        return {
-            num: null,
-        };
-    },
     methods: {
-        showSquare: function() {
-            if (this.num !== null) {
-                alert(this.calculateSquare(this.num));
-            } else {
-                alert("Введите число");
-            }
+        showSquare: function(num) {
+            alert(this.calculateSquare(num));
         },
         calculateSquare: function(num) {
             return num * num;
