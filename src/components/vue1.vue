@@ -2,7 +2,9 @@
 export default {
     data() {
 	return {
-		num: 5,
+		num1: 1,
+		num2: 2,
+		num3: 3,
 	}
 }
 }
@@ -10,6 +12,6 @@ export default {
 </script>
 <template>
 	<div>
-		<p> {{ num * num }}</p>
+		<p> {{ num1 + num2 + num3}}</p>
 	</div>
 </template>
