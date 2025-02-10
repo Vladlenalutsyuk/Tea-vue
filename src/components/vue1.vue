@@ -2,9 +2,7 @@
 export default {
     data() {
 	return {
-		num1: 1,
-		num2: 2,
-		num3: 3,
+		arr: ['x', 'y', 'z'],
 	}
 }
 }
@@ -12,6 +10,9 @@ export default {
 </script>
 <template>
 	<div>
-		<p> {{ num1 + num2 + num3}}</p>
+		
+		<br> {{ arr [0] }}
+		<br> {{ arr[1] }}
+		<br> {{ arr[2] }}
 	</div>
 </template>
