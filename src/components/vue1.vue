@@ -2,14 +2,14 @@
 export default {
     data() {
 	return {
-		text: 'page',
-		href: 'page.html',
+		num: 5,
 	}
 }
 }
+
 </script>
 <template>
 	<div>
-		<a :href="href">page</a>
+		<p> {{ num * num }}</p>
 	</div>
 </template>
