@@ -1,23 +1,27 @@
-<template>
+<template> 
     <div>
-        <button @click="showCurrentDay">Показать текущий день</button>
+        <input v-model.number="num" type="number" placeholder="Введите число">
+        <button @click="showSquare">Показать квадрат числа</button>
     </div>
 </template>
 
 <script>
 export default {
+    data() {
+        return {
+            num: null,
+        };
+    },
     methods: {
-        showCurrentDay: function() {
-            let weekday = this.cape(this.getCurrentWeekday());
-            alert(weekday);
+        showSquare: function() {
+            if (this.num !== null) {
+                alert(this.calculateSquare(this.num));
+            } else {
+                alert("Введите число");
+            }
         },
-        cape: function(str) {
-            return str[0].toUpperCase() + str.slice(1);
-        },
-        getCurrentWeekday: function() {
-            let days = ["воскресенье", "понедельник", "вторник", "среда", "четверг", "пятница", "суббота"];
-            let today = new Date().getDay();
-            return days[today] || "Неверное значение";
+        calculateSquare: function(num) {
+            return num * num;
         }
     }
 };
