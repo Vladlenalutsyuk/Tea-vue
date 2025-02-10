@@ -15,7 +15,6 @@ methods: {
 </script>
 <template>
 	<div>
-		
-		{{ show() }}
+		<button @click="show">date</button>
 	</div>
 </template>
