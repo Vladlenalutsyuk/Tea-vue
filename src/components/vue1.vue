@@ -2,12 +2,14 @@
 export default {
     data() {
         return {
-            obj: { x: 1, y: 2, z: 3 },
+			num1: 1,
+			num2: 2,
         };
     },
     methods: {
         show() {
-            alert(new Date());
+            alert(this.num1);
+			alert(this.num2);
         }
     }
 };
@@ -15,6 +17,6 @@ export default {
 
 <template>
     <div>
-        <button @mouseover="show">date</button>
+        <p> {{num1 + num2}}</p>
     </div>
 </template>
