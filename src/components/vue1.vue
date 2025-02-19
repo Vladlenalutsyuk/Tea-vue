@@ -1,18 +1,18 @@
 <template>
-  <p v-if="!hidden">text</p>
-  <button @click="toggleHidden">Переключить состояние</button>
+  <p v-if="isVisible">Это скрытый абзац</p>
+  <button @click="showParagraph">Показать абзац</button>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      hidden: true, // Стартовое значение
+      isVisible: false, // Абзац изначально скрыт
     };
   },
   methods: {
-    toggleHidden() {
-      this.hidden = !this.hidden; // Переключаем значение hidden
+    showParagraph() {
+      this.isVisible = true; // Показываем абзац
     },
   },
 };
