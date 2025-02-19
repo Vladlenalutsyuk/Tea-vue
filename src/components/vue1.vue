@@ -1,5 +1,5 @@
 <template>
-  <div v-for="item in items" :key="item">{{ item }}</div>
+  <div v-for="item in items" :key="item">{{ item * item }}</div>
 </template>
 
 <script>
