@@ -1,6 +1,7 @@
 <template>
-  <p v-if="isVisible">Это скрытый абзац</p>
+  <p v-if="isVisible">Это абзац</p>
   <button @click="showParagraph">Показать абзац</button>
+  <button @click="hideParagraph">Скрыть абзац</button>
 </template>
 
 <script>
@@ -13,6 +14,9 @@ export default {
   methods: {
     showParagraph() {
       this.isVisible = true; // Показываем абзац
+    },
+    hideParagraph() {
+      this.isVisible = false; // Скрываем абзац
     },
   },
 };
