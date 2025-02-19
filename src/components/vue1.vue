@@ -2,6 +2,7 @@
   <p>Цена за единицу: {{ cost }}</p>
   <p>Количество: {{ amount }}</p>
   <p>Полная стоимость: {{ price }}</p>
+  <button @click="changeCost">Изменить цену</button>
 </template>
 
 <script>
@@ -15,6 +16,11 @@ export default {
   computed: {
     price() {
       return this.cost * this.amount;
+    },
+  },
+  methods: {
+    changeCost() {
+      this.cost += 100; // Меняем цену
     },
   },
 };
