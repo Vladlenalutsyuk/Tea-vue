@@ -1,11 +1,20 @@
 <template>
-  <button @click="toggle(1)">Toggle Абзац 1</button>
+  <!-- Кнопка для первого абзаца -->
+  <button @click="toggle(1)">
+    {{ visible1 ? 'Скрыть абзац 1' : 'Показать абзац 1' }}
+  </button>
   <p v-if="visible1">Это первый абзац</p>
 
-  <button @click="toggle(2)">Toggle Абзац 2</button>
+  <!-- Кнопка для второго абзаца -->
+  <button @click="toggle(2)">
+    {{ visible2 ? 'Скрыть абзац 2' : 'Показать абзац 2' }}
+  </button>
   <p v-if="visible2">Это второй абзац</p>
 
-  <button @click="toggle(3)">Toggle Абзац 3</button>
+  <!-- Кнопка для третьего абзаца -->
+  <button @click="toggle(3)">
+    {{ visible3 ? 'Скрыть абзац 3' : 'Показать абзац 3' }}
+  </button>
   <p v-if="visible3">Это третий абзац</p>
 </template>
 
