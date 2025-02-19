@@ -1,26 +1,12 @@
 <template>
-  <p>Цена за единицу: {{ cost }}</p>
-  <p>Количество: {{ amount }}</p>
-  <p>Полная стоимость: {{ price }}</p>
-  <button @click="changeCost">Изменить цену</button>
+  <a href="https://example.com" @click.prevent="handleClick">Не переходи по мне</a>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      cost: 100, // Цена за единицу
-      amount: 3, // Количество товаров
-    };
-  },
-  computed: {
-    price() {
-      return this.cost * this.amount;
-    },
-  },
   methods: {
-    changeCost() {
-      this.cost += 100; // Меняем цену
+    handleClick() {
+      alert("Клик по ссылке, но переход отменен!");
     },
   },
 };
