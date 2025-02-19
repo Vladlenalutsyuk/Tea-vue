@@ -1,7 +1,9 @@
 <template>
   <p v-if="isVisible">Это абзац</p>
-  <button @click="showParagraph">Показать абзац</button>
-  <button @click="hideParagraph">Скрыть абзац</button>
+  
+  <!-- Показываем кнопку в зависимости от состояния isVisible -->
+  <button v-if="!isVisible" @click="showParagraph">Показать абзац</button>
+  <button v-if="isVisible" @click="hideParagraph">Скрыть абзац</button>
 </template>
 
 <script>
