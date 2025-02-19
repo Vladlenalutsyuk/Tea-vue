@@ -1,25 +1,21 @@
 <template>
-  <!-- Кнопка для скрытия абзацев -->
-  <button @click="hideParagraphs">Скрыть абзацы</button>
-  
-  <!-- Тег template для объединения абзацев, условие накладывается на него -->
-  <template v-if="areVisible">
-    <p>Абзац 1</p>
-    <p>Абзац 2</p>
-    <p>Абзац 3</p>
-  </template>
+  <!-- Кнопка для тогглинга абзаца -->
+  <button @click="toggleParagraph">Тогглить абзац</button>
+
+  <!-- Абзац, который будет показываться/скрываться -->
+  <p v-show="isVisible">Это абзац, который будет тогглиться!</p>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      areVisible: true, // Абзацы изначально видны
+      isVisible: true, // Изначально абзац виден
     };
   },
   methods: {
-    hideParagraphs() {
-      this.areVisible = false; // При клике скрываем абзацы
+    toggleParagraph() {
+      this.isVisible = !this.isVisible; // Переключаем видимость абзаца
     },
   },
 };
