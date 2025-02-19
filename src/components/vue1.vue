@@ -1,20 +1,17 @@
 <template>
-  <ul>
-    <li v-for="(value, key, index) in users" :key="key">
-      {{ key }} - {{ value }} - {{ index + 1 }}
-    </li>
-  </ul>
+  <div>
+    <template v-for="elem in arr" :key="elem">
+      <p>{{ elem }}</p>
+      <hr>
+    </template>
+  </div>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      users: {
-        user1: '100$',
-        user2: '200$',
-        user3: '300$',
-      },
+      arr: ['Элемент 1', 'Элемент 2', 'Элемент 3'],
     };
   },
 };
