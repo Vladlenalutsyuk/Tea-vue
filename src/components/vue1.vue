@@ -1,26 +1,21 @@
 <template>
-  <div>
-    <div v-for="item in items" :key="item">
-      <p>{{ item }}</p>
-      <p class="divider"></p>
-    </div>
-  </div>
+  <ul>
+    <li v-for="(item, index) in hrefs" :key="index">
+      <a :href="item.href">{{ item.text }}</a>
+    </li>
+  </ul>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      items: [1, 2, 3],
+      hrefs: [
+        { href: '1.html', text: 'text1' },
+        { href: '2.html', text: 'text2' },
+        { href: '3.html', text: 'text3' }
+      ]
     };
-  },
+  }
 };
 </script>
-
-<style>
-.divider {
-  height: 2px;
-  background-color: black;
-  margin: 5px 0;
-}
-</style>
