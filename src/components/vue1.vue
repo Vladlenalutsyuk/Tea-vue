@@ -1,15 +1,26 @@
 <template>
-  <p v-if="age < 18">Подросток</p>
-  <p v-else-if="age >= 19 && age <= 25">Молодой человек</p>
-  <p v-else>Мужчина</p>
+  <!-- Кнопка для скрытия абзацев -->
+  <button @click="hideParagraphs">Скрыть абзацы</button>
+  
+  <!-- Тег template для объединения абзацев, условие накладывается на него -->
+  <template v-if="areVisible">
+    <p>Абзац 1</p>
+    <p>Абзац 2</p>
+    <p>Абзац 3</p>
+  </template>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      age: 25, // здесь можно установить возраст
+      areVisible: true, // Абзацы изначально видны
     };
+  },
+  methods: {
+    hideParagraphs() {
+      this.areVisible = false; // При клике скрываем абзацы
+    },
   },
 };
 </script>
