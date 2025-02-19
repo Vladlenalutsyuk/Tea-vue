@@ -1,9 +1,9 @@
 <template>
   <div>
-    <template v-for="elem in arr" :key="elem">
-      <p>{{ elem }}</p>
-      <hr>
-    </template>
+    <div v-for="item in items" :key="item">
+      <p>{{ item }}</p>
+      <p class="divider"></p>
+    </div>
   </div>
 </template>
 
@@ -11,8 +11,16 @@
 export default {
   data() {
     return {
-      arr: ['Элемент 1', 'Элемент 2', 'Элемент 3'],
+      items: [1, 2, 3],
     };
   },
 };
 </script>
+
+<style>
+.divider {
+  height: 2px;
+  background-color: black;
+  margin: 5px 0;
+}
+</style>
