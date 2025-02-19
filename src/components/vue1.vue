@@ -1,12 +1,12 @@
 <template>
-  <a href="https://example.com" @click.prevent="handleClick">Не переходи по мне</a>
+  <button @click.once="handleClick">Кликни меня</button>
 </template>
 
 <script>
 export default {
   methods: {
     handleClick() {
-      alert("Клик по ссылке, но переход отменен!");
+      alert("Первый клик!");
     },
   },
 };
