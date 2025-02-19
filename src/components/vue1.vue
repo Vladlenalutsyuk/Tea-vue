@@ -1,19 +1,18 @@
 <template>
-  <p v-if="visible">Первый абзац, когда visible = true</p>
-  <p v-else>Второй абзац, когда visible = false</p>
-  <button @click="toggleVisible">Переключить видимость</button>
+  <p v-if="!hidden">text</p>
+  <button @click="toggleHidden">Переключить состояние</button>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      visible: true, // Стартовое значение
+      hidden: true, // Стартовое значение
     };
   },
   methods: {
-    toggleVisible() {
-      this.visible = !this.visible; // Переключаем значение visible
+    toggleHidden() {
+      this.hidden = !this.hidden; // Переключаем значение hidden
     },
   },
 };
