@@ -1,22 +1,20 @@
 <template>
-  <p>{{ text }}</p>
-  <button @click="setTextOne">Текст 1</button>
-  <button @click="setTextTwo">Текст 2</button>
+  <p>Цена за единицу: {{ cost }}</p>
+  <p>Количество: {{ amount }}</p>
+  <p>Полная стоимость: {{ price }}</p>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      text: "Исходный текст",
+      cost: 100, // Цена за единицу
+      amount: 3, // Количество товаров
     };
   },
-  methods: {
-    setTextOne() {
-      this.text = "Первый вариант текста";
-    },
-    setTextTwo() {
-      this.text = "Второй вариант текста";
+  computed: {
+    price() {
+      return this.cost * this.amount;
     },
   },
 };
