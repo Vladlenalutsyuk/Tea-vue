@@ -1,10 +1,10 @@
 <template>
   <div>
-    <!-- Инпут, который будет блокироваться и разблокироваться -->
-    <input v-bind:disabled="isDisabled" type="text" placeholder="Введите текст">
+    <!-- Чекбокс для управления состоянием инпута -->
+    <input type="checkbox" v-model="isChecked"> Разрешить ввод
 
-    <!-- Кнопка для переключения блокировки инпута -->
-    <button @click="toggleInput">Переключить блокировку</button>
+    <!-- Инпут, который будет заблокирован или разблокирован в зависимости от состояния чекбокса -->
+    <input v-bind:disabled="!isChecked" type="text" placeholder="Введите текст">
   </div>
 </template>
 
@@ -12,14 +12,8 @@
 export default {
   data() {
     return {
-      isDisabled: false,  // Изначально инпут не заблокирован
+      isChecked: false,  // Изначально чекбокс не отмечен, инпут заблокирован
     };
-  },
-  methods: {
-    // Метод для переключения состояния блокировки инпута
-    toggleInput() {
-      this.isDisabled = !this.isDisabled;  // Меняем состояние на противоположное
-    }
   }
 };
 </script>
