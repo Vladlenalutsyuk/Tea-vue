@@ -1,16 +1,17 @@
 <template>
   <div>
-    <p>Какие языки вы знаете?</p>
-    <input type="checkbox" v-model="languages" value="English"> Английский
-    <input type="checkbox" v-model="languages" value="Spanish"> Испанский
-    <input type="checkbox" v-model="languages" value="French"> Французский
-    <input type="checkbox" v-model="languages" value="German"> Немецкий
-    <input type="checkbox" v-model="languages" value="Russian"> Русский
-
-    <p>Вы знаете следующие языки:</p>
-    <ul>
-      <li v-for="(language, index) in languages" :key="index">{{ language }}</li>
-    </ul>
+    <p>Какой язык для вас родной?</p>
+    
+    <input type="radio" id="russian" name="language" v-model="nativeLanguage" value="Русский">
+    <label for="russian">Русский</label>
+    
+    <input type="radio" id="english" name="language" v-model="nativeLanguage" value="English">
+    <label for="english">English</label>
+    
+    <input type="radio" id="spanish" name="language" v-model="nativeLanguage" value="Español">
+    <label for="spanish">Español</label>
+    
+    <p>Ваш родной язык: {{ nativeLanguage }}</p>
   </div>
 </template>
 
@@ -18,8 +19,8 @@
 export default {
   data() {
     return {
-      languages: []
+      nativeLanguage: '', // Здесь будет храниться выбранный язык
     };
-  }
+  },
 };
 </script>
