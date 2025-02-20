@@ -1,7 +1,6 @@
 <template>
   <div>
-    <p :class="obj">Этот текст можно скрывать и показывать</p>
-    <button @click="toggleElement">Тоггл</button>
+    <p :class="obj">Этот текст с динамическими классами</p>
   </div>
 </template>
 
@@ -10,20 +9,21 @@ export default {
   data() {
     return {
       obj: {
-        hidden: true,
+        active: true, // Класс active будет применен
+        valid: false, // Класс valid НЕ будет применен
       },
     };
-  },
-  methods: {
-    toggleElement() {
-      this.obj.hidden = !this.obj.hidden; // Переключаем состояние
-    },
   },
 };
 </script>
 
 <style>
-.hidden {
-  display: none;
+.active {
+  color: green;
+  font-weight: bold;
+}
+
+.valid {
+  text-decoration: underline;
 }
 </style>
