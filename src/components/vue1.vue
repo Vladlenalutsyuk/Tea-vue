@@ -1,9 +1,8 @@
 <template>
   <div>
-    <input v-model.number="num1" type="number" placeholder="Введите первое число">
-    <input v-model.number="num2" type="number" placeholder="Введите второе число">
-    <button @click="calculateSum">Посчитать сумму</button>
-    <p>Сумма: {{ result }}</p>
+    <input v-model="text1" type="text" placeholder="Введите первый текст">
+    <input v-model="text2" type="text" placeholder="Введите второй текст">
+    <button @click="swapText">Поменять местами</button>
   </div>
 </template>
 
@@ -11,14 +10,13 @@
 export default {
   data() {
     return {
-      num1: 0,
-      num2: 0,
-      result: 0
+      text1: '',
+      text2: ''
     };
   },
   methods: {
-    calculateSum() {
-      this.result = this.num1 + this.num2;
+    swapText() {
+      [this.text1, this.text2] = [this.text2, this.text1];
     }
   }
 };
