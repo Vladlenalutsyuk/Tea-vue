@@ -1,23 +1,29 @@
 <template>
-  <p :class="cssClasses">Этот текст стилизован</p>
+  <div>
+    <p :class="obj">Этот текст должен иметь динамические классы</p>
+  </div>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      cssClasses: 'red-text bold-text'
+      obj: {
+        done: true,
+        selected: false,
+      },
     };
-  }
+  },
 };
 </script>
 
 <style>
-.red-text {
-  color: red;
+.done {
+  color: green;
+  font-weight: bold;
 }
 
-.bold-text {
-  font-weight: bold;
+.selected {
+  background-color: yellow;
 }
 </style>
