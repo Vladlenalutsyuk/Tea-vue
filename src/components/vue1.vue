@@ -1,11 +1,9 @@
 <template>
   <div>
     <ul>
-      <li v-for="(item, index) in items" :key="index">
-        {{ item }}
-      </li>
+      <li v-for="(item, index) in items" :key="index">{{ item }}</li>
     </ul>
-    <button @click="addItem">Добавить элемент</button>
+    <button @click="removeFirst">Удалить первый</button>
   </div>
 </template>
 
@@ -17,8 +15,8 @@ export default {
     };
   },
   methods: {
-    addItem() {
-      this.items.push(`Элемент ${this.items.length + 1}`);
+    removeFirst() {
+      if (this.items.length) this.items.shift();
     }
   }
 };
