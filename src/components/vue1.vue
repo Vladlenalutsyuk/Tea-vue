@@ -1,10 +1,10 @@
 <template>
   <div>
     <!-- Инпут с двусторонней привязкой -->
-    <input v-model="message">
-    
-    <!-- Абзац, который отображает содержимое message -->
-    <p>{{ message }}</p>
+    <input v-model="text">
+
+    <!-- Абзац, который отображает введенный текст -->
+    <p>{{ text }}</p>
   </div>
 </template>
 
@@ -12,7 +12,7 @@
 export default {
   data() {
     return {
-      message: 'hello',  // Начальное значение для message
+      text: '',  // Начальное значение пустое
     };
   },
 };
