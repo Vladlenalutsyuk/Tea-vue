@@ -1,7 +1,8 @@
 <template>
   <div>
-    <input v-model.number="number" type="number" placeholder="Введите число">
-    <p>Квадрат числа: {{ squaredNumber }}</p>
+    <input v-model.number="num" type="number" placeholder="Введите число">
+    <button @click="calculateSqrt">Вычислить корень</button>
+    <p>Квадратный корень: {{ result }}</p>
   </div>
 </template>
 
@@ -9,12 +10,13 @@
 export default {
   data() {
     return {
-      number: 0
+      num: 0,
+      result: 0
     };
   },
-  computed: {
-    squaredNumber() {
-      return this.number ** 2;
+  methods: {
+    calculateSqrt() {
+      this.result = Math.sqrt(this.num);
     }
   }
 };
