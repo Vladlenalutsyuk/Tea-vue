@@ -1,10 +1,7 @@
 <template>
   <div>
-    <!-- Инпут с двусторонней привязкой -->
-    <input v-model="text">
-
-    <!-- Абзац, который отображает текст в верхнем регистре -->
-    <p>{{ uppercaseText }}</p>
+    <input v-model.number="number" type="number" placeholder="Введите число">
+    <p>Квадрат числа: {{ squaredNumber }}</p>
   </div>
 </template>
 
@@ -12,14 +9,13 @@
 export default {
   data() {
     return {
-      text: '',  // Начальное значение пустое
+      number: 0
     };
   },
   computed: {
-    // Вычисляемое свойство, которое возвращает текст в верхнем регистре
-    uppercaseText() {
-      return this.text.toUpperCase();
-    },
-  },
+    squaredNumber() {
+      return this.number ** 2;
+    }
+  }
 };
 </script>
