@@ -1,4 +1,4 @@
 <template>
-  <p :style="{ color: 'green', backgroundColor: 'yellow' }">
+  <p :style="{ fontWeight: 'bold', fontStyle: 'italic' }">
   </p>
 </template>
