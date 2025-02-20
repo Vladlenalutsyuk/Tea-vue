@@ -1,10 +1,10 @@
 <template>
   <div>
-    <!-- Инпут для ввода текста -->
-    <input v-model="text" @keyup.enter="displayText">
+    <!-- Ссылка -->
+    <a href="#" @click="handleCtrlClick">Нажмите меня с Ctrl</a>
 
-    <!-- Абзац, в который будет выведен введенный текст -->
-    <p>{{ displayedText }}</p>
+    <!-- Абзац, в который будет выведен текст -->
+    <p>{{ message }}</p>
   </div>
 </template>
 
@@ -12,14 +12,15 @@
 export default {
   data() {
     return {
-      text: '',  // Вводимый текст
-      displayedText: '',  // Текст для отображения в абзаце
+      message: '',  // Сообщение для отображения
     };
   },
   methods: {
-    // Метод для отображения текста при нажатии Enter
-    displayText() {
-      this.displayedText = this.text;
+    // Метод для обработки клика с зажатым клавишей Ctrl
+    handleCtrlClick(event) {
+      if (event.ctrlKey) {
+        this.message = 'Вы нажали Ctrl и кликнули на ссылку!';
+      }
     }
   }
 };
