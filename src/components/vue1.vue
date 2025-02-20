@@ -1,10 +1,7 @@
 <template>
   <div>
-    <input v-model="fullName" type="text" placeholder="Введите ФИО">
-    <button @click="splitName">Разделить ФИО</button>
-    <p>Фамилия: {{ lastName }}</p>
-    <p>Имя: {{ firstName }}</p>
-    <p>Отчество: {{ middleName }}</p>
+    <textarea v-model="text" placeholder="Введите текст..."></textarea>
+    <p>Вы ввели: {{ text }}</p>
   </div>
 </template>
 
@@ -12,19 +9,8 @@
 export default {
   data() {
     return {
-      fullName: "",
-      lastName: "",
-      firstName: "",
-      middleName: ""
+      text: ""
     };
-  },
-  methods: {
-    splitName() {
-      const parts = this.fullName.trim().split(" ");
-      this.lastName = parts[0] || "";
-      this.firstName = parts[1] || "";
-      this.middleName = parts[2] || "";
-    }
   }
 };
 </script>
