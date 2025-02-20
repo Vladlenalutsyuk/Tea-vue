@@ -21,12 +21,17 @@
 <script>
 export default {
   data() {
+    const currentDate = new Date();
+    const currentDay = currentDate.getDate();
+    const currentMonth = currentDate.getMonth(); // Январь это 0
+    const currentYear = currentDate.getFullYear();
+
     return {
-      selectedDay: 1,  // Значение по умолчанию для дня
-      selectedMonth: 'Январь',  // Значение по умолчанию для месяца
-      selectedYear: 2023,  // Значение по умолчанию для года
+      selectedDay: currentDay,  // Устанавливаем текущий день
+      selectedMonth: this.months[currentMonth],  // Устанавливаем текущий месяц
+      selectedYear: currentYear,  // Устанавливаем текущий год
       months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
-      years: [2020, 2021, 2022, 2023, 2024],  // Пример диапазона лет
+      years: [2020, 2021, 2022, 2023, 2024],
     };
   },
 };
