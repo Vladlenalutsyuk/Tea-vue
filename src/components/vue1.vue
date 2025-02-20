@@ -1,7 +1,7 @@
 <template>
   <div>
-    <!-- Ссылка -->
-    <a href="#" @click="handleCtrlClick">Нажмите меня с Ctrl</a>
+    <!-- Ссылка, по клику на которую будет выводиться текст -->
+    <a href="#" @mousedown="handleMouseClick">Нажмите на меня</a>
 
     <!-- Абзац, в который будет выведен текст -->
     <p>{{ message }}</p>
@@ -16,10 +16,14 @@ export default {
     };
   },
   methods: {
-    // Метод для обработки клика с зажатым клавишей Ctrl
-    handleCtrlClick(event) {
-      if (event.ctrlKey) {
-        this.message = 'Вы нажали Ctrl и кликнули на ссылку!';
+    // Метод для обработки нажатия кнопки мыши
+    handleMouseClick(event) {
+      if (event.button === 0) {
+        this.message = 'left';  // Левая кнопка
+      } else if (event.button === 1) {
+        this.message = 'middle';  // Средняя кнопка
+      } else if (event.button === 2) {
+        this.message = 'right';  // Правая кнопка
       }
     }
   }
