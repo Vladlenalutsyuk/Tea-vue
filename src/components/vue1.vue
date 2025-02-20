@@ -1,14 +1,16 @@
 <template>
   <div>
-    <p>В каком городе вы живете?</p>
-    <select v-model="city">
-      <option value="Москва">Москва</option>
-      <option value="Санкт-Петербург">Санкт-Петербург</option>
-      <option value="Новосибирск">Новосибирск</option>
-      <option value="Екатеринбург">Екатеринбург</option>
+    <p>Выберите день недели:</p>
+    <select v-model="selectedDay">
+      <option>Понедельник</option>
+      <option>Вторник</option>
+      <option>Среда</option>
+      <option>Четверг</option>
+      <option>Пятница</option>
+      <option>Суббота</option>
+      <option>Воскресенье</option>
     </select>
-
-    <p>Вы живете в городе: {{ city }}</p>
+    <p>Вы выбрали: {{ selectedDay }}</p>
   </div>
 </template>
 
@@ -16,7 +18,7 @@
 export default {
   data() {
     return {
-      city: '', // по умолчанию значение пустое
+      selectedDay: 'Понедельник', // Значение по умолчанию
     };
   },
 };
