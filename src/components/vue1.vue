@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p :class="obj">Этот текст с динамическими классами</p>
+    <p :class="classes">Этот текст зависит от свойств</p>
   </div>
 </template>
 
@@ -8,22 +8,30 @@
 export default {
   data() {
     return {
-      obj: {
-        active: true, // Класс active будет применен
-        valid: false, // Класс valid НЕ будет применен
-      },
+      isValid: true,  // Если true, применяется класс valid
+      isDisabled: true,  // Если true, применяется класс disabled
     };
+  },
+  computed: {
+    // Создаем вычисляемое свойство для классов
+    classes() {
+      return {
+        valid: this.isValid,    // Применяется класс valid, если isValid === true
+        disabled: this.isDisabled,  // Применяется класс disabled, если isDisabled === true
+      };
+    },
   },
 };
 </script>
 
 <style>
-.active {
+.valid {
   color: green;
   font-weight: bold;
 }
 
-.valid {
-  text-decoration: underline;
+.disabled {
+  color: gray;
+  text-decoration: line-through;
 }
 </style>
