@@ -1,23 +1,10 @@
 <template>
-  <div>
-    <ul>
-      <li v-for="(item, index) in items" :key="index">{{ item }}</li>
-    </ul>
-    <button @click="sortList">Сортировать</button>
-  </div>
+  <p>1</p>
+  <p>2</p>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      items: ['Банан', 'Яблоко', 'Апельсин', 'Груша']
-    };
-  },
-  methods: {
-    sortList() {
-      this.items.sort();
-    }
+<style>
+  p {
+    color: red;
   }
-};
-</script>
+</style>
