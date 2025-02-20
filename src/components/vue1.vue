@@ -1,10 +1,23 @@
 <template>
-  <p>1</p>
-  <p>2</p>
+  <p :class="cssClasses">Этот текст стилизован</p>
 </template>
 
-<style>
-  p {
-    color: red;
+<script>
+export default {
+  data() {
+    return {
+      cssClasses: 'red-text bold-text'
+    };
   }
+};
+</script>
+
+<style>
+.red-text {
+  color: red;
+}
+
+.bold-text {
+  font-weight: bold;
+}
 </style>
