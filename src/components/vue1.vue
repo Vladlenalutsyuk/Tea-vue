@@ -1,19 +1,14 @@
 <template>
   <div>
-    <p>Какой язык для вас родной?</p>
-    
-    <input type="radio" id="russian" name="language" v-model="nativeLanguage" value="Русский">
-    <label for="russian">Русский</label>
-    
-    <input type="radio" id="english" name="language" v-model="nativeLanguage" value="English">
-    <label for="english">English</label>
-    
-    <input type="radio" id="spanish" name="language" v-model="nativeLanguage" value="Español">
-    <label for="spanish">Español</label>
-    
-    <p v-if="nativeLanguage === 'Русский'">Привет, как дела?</p>
-    <p v-if="nativeLanguage === 'English'">Hello, how are you?</p>
-    <p v-if="nativeLanguage === 'Español'">Hola, ¿cómo estás?</p>
+    <p>В каком городе вы живете?</p>
+    <select v-model="city">
+      <option value="Москва">Москва</option>
+      <option value="Санкт-Петербург">Санкт-Петербург</option>
+      <option value="Новосибирск">Новосибирск</option>
+      <option value="Екатеринбург">Екатеринбург</option>
+    </select>
+
+    <p>Вы живете в городе: {{ city }}</p>
   </div>
 </template>
 
@@ -21,7 +16,7 @@
 export default {
   data() {
     return {
-      nativeLanguage: '', // Хранит выбранный язык
+      city: '', // по умолчанию значение пустое
     };
   },
 };
