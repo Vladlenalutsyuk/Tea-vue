@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p :class="obj">Этот текст должен иметь динамические классы</p>
+    <p :class="obj">Этот текст скрыт по умолчанию</p>
   </div>
 </template>
 
@@ -9,8 +9,7 @@ export default {
   data() {
     return {
       obj: {
-        done: true,
-        selected: false,
+        hidden: true, // Элемент скрыт
       },
     };
   },
@@ -18,12 +17,7 @@ export default {
 </script>
 
 <style>
-.done {
-  color: green;
-  font-weight: bold;
-}
-
-.selected {
-  background-color: yellow;
+.hidden {
+  display: none;
 }
 </style>
