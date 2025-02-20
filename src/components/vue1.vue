@@ -1,7 +1,10 @@
 <template>
   <div>
     <textarea v-model="text" placeholder="Введите текст..."></textarea>
-    <p>Вы ввели: {{ text }}</p>
+    <button @click="splitText">Разбить на слова</button>
+    <ul>
+      <li v-for="(word, index) in words" :key="index">{{ word }}</li>
+    </ul>
   </div>
 </template>
 
@@ -9,8 +12,14 @@
 export default {
   data() {
     return {
-      text: ""
+      text: "",
+      words: []
     };
+  },
+  methods: {
+    splitText() {
+      this.words = this.text.trim().split(/\s+/); // Разделяем текст по пробелам
+    }
   }
 };
 </script>
