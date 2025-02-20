@@ -3,7 +3,7 @@
     <ul>
       <li v-for="(item, index) in items" :key="index">{{ item }}</li>
     </ul>
-    <button @click="removeSecondLast">Удалить предпоследний</button>
+    <button @click="sortList">Сортировать</button>
   </div>
 </template>
 
@@ -11,12 +11,12 @@
 export default {
   data() {
     return {
-      items: ['Элемент 1', 'Элемент 2', 'Элемент 3']
+      items: ['Банан', 'Яблоко', 'Апельсин', 'Груша']
     };
   },
   methods: {
-    removeSecondLast() {
-      if (this.items.length > 1) this.items.splice(this.items.length - 2, 1);
+    sortList() {
+      this.items.sort();
     }
   }
 };
