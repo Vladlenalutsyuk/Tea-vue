@@ -27,10 +27,10 @@ export default {
     };
   },
   methods: {
-    // Метод для добавления нового элемента в конец массива
+    // Метод для добавления нового элемента в начало массива
     addItem() {
       if (this.newItem.trim() !== '') {
-        this.items.push(this.newItem);  // Добавляем элемент в конец массива
+        this.items.unshift(this.newItem);  // Добавляем элемент в начало массива
         this.newItem = '';  // Очищаем инпут
       }
     }
