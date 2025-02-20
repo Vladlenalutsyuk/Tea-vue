@@ -1,21 +1,25 @@
 <template>
-  <ul>
-    <li v-for="product in products" :key="product.id">
-      {{ product.name }}
-    </li>
-  </ul>
+  <div>
+    <ul>
+      <li v-for="(item, index) in items" :key="index">
+        {{ item }}
+      </li>
+    </ul>
+    <button @click="addItem">Добавить элемент</button>
+  </div>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      products: [
-        { id: 1, name: 'product1' },
-        { id: 2, name: 'product2' },
-        { id: 3, name: 'product3' }
-      ]
+      items: ['Элемент 1', 'Элемент 2', 'Элемент 3']
     };
+  },
+  methods: {
+    addItem() {
+      this.items.push(`Элемент ${this.items.length + 1}`);
+    }
   }
 };
 </script>
