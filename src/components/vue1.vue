@@ -3,7 +3,7 @@
     <ul>
       <li v-for="(item, index) in items" :key="index">{{ item }}</li>
     </ul>
-    <button @click="removeFirst">Удалить первый</button>
+    <button @click="removeLast">Удалить последний</button>
   </div>
 </template>
 
@@ -15,8 +15,8 @@ export default {
     };
   },
   methods: {
-    removeFirst() {
-      if (this.items.length) this.items.shift();
+    removeLast() {
+      if (this.items.length) this.items.pop();
     }
   }
 };
