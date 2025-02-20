@@ -11,7 +11,9 @@
     <input type="radio" id="spanish" name="language" v-model="nativeLanguage" value="Español">
     <label for="spanish">Español</label>
     
-    <p>Ваш родной язык: {{ nativeLanguage }}</p>
+    <p v-if="nativeLanguage === 'Русский'">Привет, как дела?</p>
+    <p v-if="nativeLanguage === 'English'">Hello, how are you?</p>
+    <p v-if="nativeLanguage === 'Español'">Hola, ¿cómo estás?</p>
   </div>
 </template>
 
@@ -19,7 +21,7 @@
 export default {
   data() {
     return {
-      nativeLanguage: '', // Здесь будет храниться выбранный язык
+      nativeLanguage: '', // Хранит выбранный язык
     };
   },
 };
