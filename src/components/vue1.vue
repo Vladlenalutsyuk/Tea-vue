@@ -1,7 +1,7 @@
 <template>
   <div>
-    <p :class="obj">Этот текст можно скрыть</p>
-    <button @click="hideElement">Скрыть</button>
+    <p :class="obj">Этот текст можно скрывать и показывать</p>
+    <button @click="toggleElement">Тоггл</button>
   </div>
 </template>
 
@@ -10,13 +10,13 @@ export default {
   data() {
     return {
       obj: {
-        hidden: false,
+        hidden: true,
       },
     };
   },
   methods: {
-    hideElement() {
-      this.obj.hidden = true; // Скрываем элемент
+    toggleElement() {
+      this.obj.hidden = !this.obj.hidden; // Переключаем состояние
     },
   },
 };
