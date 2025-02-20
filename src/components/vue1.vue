@@ -1,7 +1,7 @@
 <template>
   <div>
-    <p :class="obj">Этот текст можно показать</p>
-    <button @click="showElement">Показать</button>
+    <p :class="obj">Этот текст можно скрыть</p>
+    <button @click="hideElement">Скрыть</button>
   </div>
 </template>
 
@@ -10,13 +10,13 @@ export default {
   data() {
     return {
       obj: {
-        hidden: true,
+        hidden: false,
       },
     };
   },
   methods: {
-    showElement() {
-      this.obj.hidden = false; // Показываем элемент
+    hideElement() {
+      this.obj.hidden = true; // Скрываем элемент
     },
   },
 };
