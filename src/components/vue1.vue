@@ -1,10 +1,10 @@
 <template>
   <div>
-    <!-- Чекбокс для управления состоянием инпута -->
-    <input type="checkbox" v-model="isChecked"> Разрешить ввод
+    <!-- Инпут для ввода текста -->
+    <input v-model="text" @keyup.enter="displayText">
 
-    <!-- Инпут, который будет заблокирован или разблокирован в зависимости от состояния чекбокса -->
-    <input v-bind:disabled="!isChecked" type="text" placeholder="Введите текст">
+    <!-- Абзац, в который будет выведен введенный текст -->
+    <p>{{ displayedText }}</p>
   </div>
 </template>
 
@@ -12,8 +12,15 @@
 export default {
   data() {
     return {
-      isChecked: false,  // Изначально чекбокс не отмечен, инпут заблокирован
+      text: '',  // Вводимый текст
+      displayedText: '',  // Текст для отображения в абзаце
     };
+  },
+  methods: {
+    // Метод для отображения текста при нажатии Enter
+    displayText() {
+      this.displayedText = this.text;
+    }
   }
 };
 </script>
