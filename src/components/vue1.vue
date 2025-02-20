@@ -1,6 +1,7 @@
 <template>
   <div>
-    <p :class="obj">Этот текст скрыт по умолчанию</p>
+    <p :class="obj">Этот текст можно показать</p>
+    <button @click="showElement">Показать</button>
   </div>
 </template>
 
@@ -9,9 +10,14 @@ export default {
   data() {
     return {
       obj: {
-        hidden: true, // Элемент скрыт
+        hidden: true,
       },
     };
+  },
+  methods: {
+    showElement() {
+      this.obj.hidden = false; // Показываем элемент
+    },
   },
 };
 </script>
