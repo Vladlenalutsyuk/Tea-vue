@@ -1,39 +1,34 @@
 <template>
-  <div>
-    <!-- Инпут для ввода нового элемента -->
-    <input v-model="newItem" placeholder="Введите новый элемент">
-
-    <!-- Кнопка для добавления элемента -->
-    <button @click="addItem">Добавить</button>
-
-    <!-- Список элементов массива -->
-    <ul>
-      <li v-for="(item, index) in items" :key="index">
-        {{ item }}
-      </li>
-    </ul>
-  </div>
+	<ul>
+		<li v-for="(item, index) in items" :key="item" @click="removeItem(index)">
+			{{ item }}
+		</li>
+	</ul>
 </template>
 
 <script>
+import { ref } from "vue";
+
 export default {
-  data() {
-    return {
-      // Свойство для хранения введенного текста
-      newItem: '',
-      
-      // Начальный массив
-      items: ['item1', 'item2', 'item3'],
-    };
-  },
-  methods: {
-    // Метод для добавления нового элемента в начало массива
-    addItem() {
-      if (this.newItem.trim() !== '') {
-        this.items.unshift(this.newItem);  // Добавляем элемент в начало массива
-        this.newItem = '';  // Очищаем инпут
-      }
-    }
-  }
+	setup() {
+		const items = ref(["a", "b", "c", "d", "e"]);
+
+		const removeItem = (index) => {
+			items.value = items.value.filter((_, i) => i !== index);
+		};
+
+		return { items, removeItem };
+	},
 };
 </script>
+
+<style scoped>
+li {
+	cursor: pointer;
+	user-select: none;
+	transition: opacity 0.2s ease-in-out;
+}
+li:hover {
+	opacity: 0.6;
+}
+</style>
