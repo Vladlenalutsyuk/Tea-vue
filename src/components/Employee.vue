@@ -8,12 +8,16 @@ export default {
     name: {
       type: String,
       required: true
+    },
+    salary: {
+      type: Number,
+      required: true
     }
   },
   methods: {
-    sendName() {
-      // Испускаем событие с именем работника
-      this.func(this.name); // Вызываем метод родителя, передавая имя работника
+    sendData() {
+      // Испускаем событие с именем и зарплатой работника
+      this.func(this.name, this.salary); // Вызываем метод родителя, передавая имя и зарплату
     }
   }
 };
@@ -22,7 +26,8 @@ export default {
 <template>
   <div>
     <p>Имя работника: {{ name }}</p>
-    <!-- Кнопка для передачи имени родителю -->
-    <button @click="sendName">Отправить имя родителю</button>
+    <p>Зарплата: {{ salary }}</p>
+    <!-- Кнопка для отправки данных родителю -->
+    <button @click="sendData">Отправить данные родителю</button>
   </div>
 </template>

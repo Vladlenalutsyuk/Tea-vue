@@ -6,8 +6,8 @@ export default {
     Employee, // Регистрация дочернего компонента
   },
   methods: {
-    func(name) {
-      console.log(name); // Выводим имя работника в консоль
+    func(name, salary) {
+      console.log(name, salary); // Выводим имя и зарплату работника в консоль
     }
   }
 };
@@ -16,6 +16,6 @@ export default {
 <template>
   <div>
     <!-- Передаем метод func как пропс в дочерний компонент -->
-    <Employee :func="func" name="John Doe" />
+    <Employee :func="func" :name="'John Doe'" :salary="5000" />
   </div>
 </template>
