@@ -2,16 +2,16 @@
 export default {
   props: {
     name: {
-      type: String,   // Ожидаем, что name будет строкой
-      required: true, // Пропс обязательный
+      type: String,
+      required: true,
     },
     salary: {
-      type: Number,   // Ожидаем, что salary будет числом
-      required: true, // Пропс обязательный
+      type: Number,
+      required: true,
     },
     age: {
-      type: Number,   // Ожидаем, что age будет числом
-      required: true, // Пропс обязательный
+      type: Number,
+      required: true,
     },
   },
 };
