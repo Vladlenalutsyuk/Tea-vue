@@ -10,8 +10,9 @@ export default {
 
 <template>
 	<div class="employee-card">
-		<h3>{{ name }} {{ surname }}</h3>
-		<p>Возраст: {{ age }} лет</p>
+		<p><strong>Имя:</strong> {{ name }}</p>
+		<p><strong>Фамилия:</strong> {{ surname }}</p>
+		<p><strong>Возраст:</strong> {{ age }} лет</p>
 	</div>
 </template>
 
@@ -24,10 +25,10 @@ export default {
 	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 	background: #f9f9f9;
 }
-h3 {
-	color: #333;
-}
 p {
-	margin: 5px 0;
+	font-size: 16px;
+}
+strong {
+	color: #333;
 }
 </style>
