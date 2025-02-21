@@ -1,20 +1,17 @@
 <script>
 export default {
-	data() {
-		return {
-			name: "Иван Иванов",
-			position: "Разработчик",
-			salary: 100000,
-		};
+	props: {
+		name: String,
+		surname: String,
+		age: Number,
 	},
 };
 </script>
 
 <template>
 	<div class="employee-card">
-		<h3>{{ name }}</h3>
-		<p>Должность: {{ position }}</p>
-		<p>Зарплата: {{ salary }} ₽</p>
+		<h3>{{ name }} {{ surname }}</h3>
+		<p>Возраст: {{ age }} лет</p>
 	</div>
 </template>
 
