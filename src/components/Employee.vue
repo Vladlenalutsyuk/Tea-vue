@@ -1,9 +1,18 @@
 <script>
 export default {
   props: {
-    name: String,   // Имя работника
-    salary: Number, // Зарплата работника
-    age: Number,    // Возраст работника
+    name: {
+      type: String,   // Ожидаем, что name будет строкой
+      required: true, // Пропс обязательный
+    },
+    salary: {
+      type: Number,   // Ожидаем, что salary будет числом
+      required: true, // Пропс обязательный
+    },
+    age: {
+      type: Number,   // Ожидаем, что age будет числом
+      required: true, // Пропс обязательный
+    },
   },
 };
 </script>
