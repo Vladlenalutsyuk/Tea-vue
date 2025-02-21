@@ -1,44 +1,44 @@
 <template>
   <div>
-    <!-- Если не в режиме редактирования, показываем имя и фамилию -->
-    <template v-if="!isEdit">
-      <p>{{ name }} {{ surn }}</p>
-      <button @click="edit">Edit</button>
-    </template>
-
-    <!-- Если в режиме редактирования, показываем инпуты для имени и фамилии -->
-    <template v-else>
-      <input v-model="newName" placeholder="Name" />
-      <input v-model="newSurn" placeholder="Surname" />
-      <button @click="save">Save</button>
-    </template>
+    <h2>Employee List</h2>
+    
+    <!-- Подключаем форму для добавления нового работника -->
+    <UserForm @add="addEmployee" />
+    
+    <!-- Отображаем список работников -->
+    <div v-for="user in users" :key="user.id">
+      <p>{{ user.name }} {{ user.surn }} (Salary: {{ user.salary }}, Age: {{ user.age }})</p>
+    </div>
   </div>
 </template>
 
 <script>
+import UserForm from './components/UserForm.vue';
+
 export default {
-  props: {
-    id: Number,
-    name: String,
-    surn: String
+  components: {
+    UserForm
   },
-  emits: ['update'],
   data() {
     return {
-      isEdit: false, // Переменная для переключения режима редактирования
-      newName: this.name, // Изначальное имя для редактирования
-      newSurn: this.surn // Изначальная фамилия для редактирования
+      users: [
+        { id: 1, name: 'John', surn: 'Doe', salary: 1000, age: 30 },
+        { id: 2, name: 'Jane', surn: 'Smith', salary: 2000, age: 25 },
+        { id: 3, name: 'Mike', surn: 'Jordan', salary: 1500, age: 35 }
+      ]
     };
   },
   methods: {
-    // Переключаем режим редактирования
-    edit() {
-      this.isEdit = true;
-    },
-    // Сохраняем изменения и передаем их в родительский компонент
-    save() {
-      this.isEdit = false;
-      this.$emit('update', this.id, this.newName, this.newSurn); // Испускаем событие с новыми данными
+    // Метод для добавления нового работника
+    addEmployee(name, surn, salary, age) {
+      let id = this.users.length + 1;
+      this.users.push({
+        id,
+        name,
+        surn,
+        salary,
+        age
+      });
     }
   }
 };
