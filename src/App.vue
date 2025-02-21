@@ -1,21 +1,20 @@
+<template>
+  <div>
+    <Child @customEvent="handleCustomEvent" />
+  </div>
+</template>
+
 <script>
-import Employee from './components/Employee.vue'; // Импортируем дочерний компонент
+import Child from './components/Child.vue';  // Импортируем дочерний компонент
 
 export default {
   components: {
-    Employee, // Регистрация дочернего компонента
+    Child
   },
   methods: {
-    func(name, salary) {
-      console.log(name, salary); // Выводим имя и зарплату работника в консоль
+    handleCustomEvent() {
+      console.log('Событие customEvent было испущено!');
     }
   }
 };
 </script>
-
-<template>
-  <div>
-    <!-- Передаем метод func как пропс в дочерний компонент -->
-    <Employee :func="func" :name="'John Doe'" :salary="5000" />
-  </div>
-</template>
