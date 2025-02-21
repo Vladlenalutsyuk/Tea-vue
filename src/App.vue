@@ -1,45 +1,101 @@
 <template>
-  <div>
-    <h2>Employee List</h2>
+  <div id="app">
+    <div class="menu">
+      <h2>My Notes</h2>
+      <ul>
+        <NoteItem
+          v-for="note in notes"
+          :key="note.id"
+          :note="note"
+          @select="selectNote"
+          @delete="deleteNote"
+        />
+      </ul>
+      <button @click="addNote">Add New Note</button>
+    </div>
     
-    <!-- Подключаем форму для добавления нового работника -->
-    <UserForm @add="addEmployee" />
-    
-    <!-- Отображаем список работников -->
-    <div v-for="user in users" :key="user.id">
-      <p>{{ user.name }} {{ user.surn }} (Salary: {{ user.salary }}, Age: {{ user.age }})</p>
+    <div class="editor">
+      <h2>Edit Note</h2>
+      <textarea v-model="currentNote.text" placeholder="Write your note here..." rows="10" cols="30"></textarea>
+      <button v-if="currentNote" @click="saveNote">Save Note</button>
     </div>
   </div>
 </template>
 
 <script>
-import UserForm from './components/UserForm.vue';
+import NoteItem from './components/NoteItem.vue';
 
 export default {
+  name: 'App',
   components: {
-    UserForm
+    NoteItem
   },
   data() {
     return {
-      users: [
-        { id: 1, name: 'John', surn: 'Doe', salary: 1000, age: 30 },
-        { id: 2, name: 'Jane', surn: 'Smith', salary: 2000, age: 25 },
-        { id: 3, name: 'Mike', surn: 'Jordan', salary: 1500, age: 35 }
-      ]
+      notes: [],  // Массив всех записей
+      currentNote: null  // Текущая выбранная запись
     };
   },
   methods: {
-    // Метод для добавления нового работника
-    addEmployee(name, surn, salary, age) {
-      let id = this.users.length + 1;
-      this.users.push({
-        id,
-        name,
-        surn,
-        salary,
-        age
-      });
+    // Метод для добавления новой записи
+    addNote() {
+      const newNote = {
+        id: Date.now(),
+        text: '',
+        title: `Note ${this.notes.length + 1}`
+      };
+      this.notes.push(newNote);
+      this.selectNote(newNote); // Выбираем только что созданную запись
+    },
+    // Метод для выбора записи
+    selectNote(note) {
+      this.currentNote = note;
+    },
+    // Метод для удаления записи
+    deleteNote(id) {
+      this.notes = this.notes.filter(note => note.id !== id);
+      if (this.currentNote && this.currentNote.id === id) {
+        this.currentNote = null;  // Очистка редактора при удалении текущей записи
+      }
+    },
+    // Метод для сохранения изменений
+    saveNote() {
+      // Сохраняем изменения в текущей записи
+      // В данном примере, изменения автоматически сохраняются с помощью v-model
     }
   }
 };
 </script>
+
+<style scoped>
+#app {
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu {
+  width: 200px;
+  padding: 10px;
+  border-right: 1px solid #ccc;
+}
+
+.editor {
+  padding: 10px;
+  flex-grow: 1;
+}
+
+button {
+  margin-top: 10px;
+}
+
+textarea {
+  width: 100%;
+  resize: vertical;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+</style>
+
+
