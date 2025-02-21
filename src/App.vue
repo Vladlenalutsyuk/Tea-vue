@@ -1,101 +1,112 @@
 <template>
-  <div id="app">
-    <div class="menu">
-      <h2>My Notes</h2>
+  <div class="container">
+    <div class="sidebar">
+      <h2>📋 Notes</h2>
       <ul>
-        <NoteItem
+        <li
           v-for="note in notes"
           :key="note.id"
-          :note="note"
-          @select="selectNote"
-          @delete="deleteNote"
-        />
+          :class="{ active: note.id === selectedNote?.id }"
+          @click="selectNote(note)"
+        >
+          {{ note.title || "Untitled Note" }}
+        </li>
       </ul>
-      <button @click="addNote">Add New Note</button>
+      <button @click="addNote">➕ Add Note</button>
     </div>
-    
+
     <div class="editor">
-      <h2>Edit Note</h2>
-      <textarea v-model="currentNote.text" placeholder="Write your note here..." rows="10" cols="30"></textarea>
-      <button v-if="currentNote" @click="saveNote">Save Note</button>
+      <h2>📝 Edit Note</h2>
+      <input v-if="selectedNote" v-model="selectedNote.title" placeholder="Note Title" />
+      <textarea v-if="selectedNote" v-model="selectedNote.content" placeholder="Write your note here..."></textarea>
+      <p v-else>Select a note to edit</p>
     </div>
   </div>
 </template>
 
 <script>
-import NoteItem from './components/NoteItem.vue';
-
 export default {
-  name: 'App',
-  components: {
-    NoteItem
-  },
   data() {
     return {
-      notes: [],  // Массив всех записей
-      currentNote: null  // Текущая выбранная запись
+      notes: [],
+      selectedNote: null,
     };
   },
   methods: {
-    // Метод для добавления новой записи
     addNote() {
       const newNote = {
         id: Date.now(),
-        text: '',
-        title: `Note ${this.notes.length + 1}`
+        title: "",
+        content: "",
       };
       this.notes.push(newNote);
-      this.selectNote(newNote); // Выбираем только что созданную запись
+      this.selectedNote = newNote; // Выбираем новую заметку для редактирования
     },
-    // Метод для выбора записи
     selectNote(note) {
-      this.currentNote = note;
+      this.selectedNote = note;
     },
-    // Метод для удаления записи
-    deleteNote(id) {
-      this.notes = this.notes.filter(note => note.id !== id);
-      if (this.currentNote && this.currentNote.id === id) {
-        this.currentNote = null;  // Очистка редактора при удалении текущей записи
-      }
-    },
-    // Метод для сохранения изменений
-    saveNote() {
-      // Сохраняем изменения в текущей записи
-      // В данном примере, изменения автоматически сохраняются с помощью v-model
-    }
-  }
+  },
 };
 </script>
 
 <style scoped>
-#app {
+.container {
   display: flex;
-  justify-content: space-between;
+  height: 100vh;
 }
 
-.menu {
-  width: 200px;
-  padding: 10px;
+.sidebar {
+  width: 250px;
+  background: #f4f4f4;
+  padding: 20px;
   border-right: 1px solid #ccc;
 }
 
-.editor {
+.sidebar h2 {
+    color: black;
+}
+
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
   padding: 10px;
-  flex-grow: 1;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s;
+  color: black;
+}
+
+.sidebar li:hover,
+.sidebar li.active {
+  background: #ddd;
 }
 
 button {
+  width: 100%;
+  padding: 10px;
   margin-top: 10px;
+  cursor: pointer;
+}
+
+.editor {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+input,
+textarea {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 16px;
 }
 
 textarea {
-  width: 100%;
+  height: 300px;
   resize: vertical;
 }
-
-h2 {
-  font-size: 1.5em;
-}
 </style>
-
-
