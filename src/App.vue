@@ -1,35 +1,38 @@
 <template>
   <div>
-    <User
+    <h2>Employee List</h2>
+    <!-- Перебираем массив users и создаем компонент Employee для каждого пользователя -->
+    <Employee
       v-for="user in users"
       :key="user.id"
       :id="user.id"
       :name="user.name"
       :surn="user.surn"
-      @remove="remove"
+      :age="user.age"
+      @remove="remove(user.id)"
     />
   </div>
 </template>
 
 <script>
-import User from './components/User.vue';  // Импортируем дочерний компонент
+import Employee from './components/Employee.vue';
 
 export default {
   components: {
-    User
+    Employee
   },
   data() {
     return {
       users: [
-        { id: 1, name: 'name1', surn: 'surn1' },
-        { id: 2, name: 'name2', surn: 'surn2' },
-        { id: 3, name: 'name3', surn: 'surn3' }
+        { id: 1, name: 'John', surn: 'Doe', age: 30 },
+        { id: 2, name: 'Jane', surn: 'Smith', age: 25 },
+        { id: 3, name: 'Mike', surn: 'Jordan', age: 35 }
       ]
     };
   },
   methods: {
+    // Метод для удаления пользователя по его id
     remove(id) {
-      // Удаление пользователя по id
       this.users = this.users.filter(user => user.id !== id);
     }
   }

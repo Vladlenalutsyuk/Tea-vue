@@ -1,33 +1,19 @@
-<script>
-export default {
-  props: {
-    func: {
-      type: Function,
-      required: true
-    },
-    name: {
-      type: String,
-      required: true
-    },
-    salary: {
-      type: Number,
-      required: true
-    }
-  },
-  methods: {
-    sendData() {
-      // Испускаем событие с именем и зарплатой работника
-      this.func(this.name, this.salary); // Вызываем метод родителя, передавая имя и зарплату
-    }
-  }
-};
-</script>
-
 <template>
-  <div>
-    <p>Имя работника: {{ name }}</p>
-    <p>Зарплата: {{ salary }}</p>
-    <!-- Кнопка для отправки данных родителю -->
-    <button @click="sendData">Отправить данные родителю</button>
-  </div>
-</template>
+    <div>
+      <p>{{ name }} {{ surn }} (Age: {{ age }})</p>
+      <button @click="$emit('remove', id)">Remove</button>
+    </div>
+  </template>
+  
+  <script>
+  export default {
+    props: {
+      id: Number,
+      name: String,
+      surn: String,
+      age: Number
+    },
+    emits: ['remove']
+  };
+  </script>
+  
