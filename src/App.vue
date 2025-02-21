@@ -1,16 +1,13 @@
 <script>
-import User from './components/User.vue'; // Импортируем дочерний компонент
+import Employee from './components/Employee.vue'; // Импортируем дочерний компонент
 
 export default {
   components: {
-    User, // Регистрация дочернего компонента
+    Employee, // Регистрация дочернего компонента
   },
   methods: {
-    func1() {
-      alert('Функция 1 была вызвана');
-    },
-    func2() {
-      alert('Функция 2 была вызвана');
+    func(name) {
+      console.log(name); // Выводим имя работника в консоль
     }
   }
 };
@@ -18,7 +15,7 @@ export default {
 
 <template>
   <div>
-    <!-- Передаем две функции как пропсы в дочерний компонент -->
-    <User :func1="func1" :func2="func2" />
+    <!-- Передаем метод func как пропс в дочерний компонент -->
+    <Employee :func="func" name="John Doe" />
   </div>
 </template>
