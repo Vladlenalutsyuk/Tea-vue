@@ -1,38 +1,22 @@
 <script>
-import Employee from "./components/Employee.vue"; // Импортируем компонент
+import Employee from './components/Employee.vue'; // Импортируем дочерний компонент
 
 export default {
-	data() {
-		return {
-			employees: [
-				{ id: 1, name: "Иван", surname: "Иванов", age: 30 },
-				{ id: 2, name: "Анна", surname: "Петрова", age: 25 },
-				{ id: 3, name: "Сергей", surname: "Сидоров", age: 40 },
-			],
-		};
-	},
-	components: {
-		Employee,
-	},
+  data() {
+    return {
+      name: 'Иван Иванов',     // Имя работника
+      salary: 50000,           // Зарплата работника
+      age: 35                  // Возраст работника
+    };
+  },
+  components: {
+    Employee,  // Регистрация дочернего компонента
+  },
 };
 </script>
 
 <template>
-	<div>
-		<h2>Список сотрудников</h2>
-		<Employee
-			v-for="employee in employees"
-			:key="employee.id"
-			:name="employee.name"
-			:surname="employee.surname"
-			:age="employee.age"
-		/>
-	</div>
+  <div>
+    <Employee :name="name" :salary="salary" :age="age" />
+  </div>
 </template>
-
-<style scoped>
-h2 {
-	text-align: center;
-	color: #222;
-}
-</style>
