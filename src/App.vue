@@ -1,39 +1,44 @@
 <template>
   <div>
-    <h2>Employee List</h2>
-    <!-- Перебираем массив users и создаем компонент Employee для каждого пользователя -->
-    <Employee
-      v-for="user in users"
-      :key="user.id"
-      :id="user.id"
-      :name="user.name"
-      :surn="user.surn"
-      :age="user.age"
-      @remove="remove(user.id)"
-    />
+    <!-- Если не в режиме редактирования, показываем имя и фамилию -->
+    <template v-if="!isEdit">
+      <p>{{ name }} {{ surn }}</p>
+      <button @click="edit">Edit</button>
+    </template>
+
+    <!-- Если в режиме редактирования, показываем инпуты для имени и фамилии -->
+    <template v-else>
+      <input v-model="newName" placeholder="Name" />
+      <input v-model="newSurn" placeholder="Surname" />
+      <button @click="save">Save</button>
+    </template>
   </div>
 </template>
 
 <script>
-import Employee from './components/Employee.vue';
-
 export default {
-  components: {
-    Employee
+  props: {
+    id: Number,
+    name: String,
+    surn: String
   },
+  emits: ['update'],
   data() {
     return {
-      users: [
-        { id: 1, name: 'John', surn: 'Doe', age: 30 },
-        { id: 2, name: 'Jane', surn: 'Smith', age: 25 },
-        { id: 3, name: 'Mike', surn: 'Jordan', age: 35 }
-      ]
+      isEdit: false, // Переменная для переключения режима редактирования
+      newName: this.name, // Изначальное имя для редактирования
+      newSurn: this.surn // Изначальная фамилия для редактирования
     };
   },
   methods: {
-    // Метод для удаления пользователя по его id
-    remove(id) {
-      this.users = this.users.filter(user => user.id !== id);
+    // Переключаем режим редактирования
+    edit() {
+      this.isEdit = true;
+    },
+    // Сохраняем изменения и передаем их в родительский компонент
+    save() {
+      this.isEdit = false;
+      this.$emit('update', this.id, this.newName, this.newSurn); // Испускаем событие с новыми данными
     }
   }
 };
