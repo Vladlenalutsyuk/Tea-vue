@@ -1,10 +1,18 @@
 <template>
-    <button @click="$emit('customEvent')">Click Me</button>
+    <div>
+      <p>{{ name }} {{ surn }}</p>
+      <button @click="$emit('remove', id)">Remove</button>
+    </div>
   </template>
   
   <script>
   export default {
-    name: 'Child'
+    props: {
+      id: Number,
+      name: String,
+      surn: String
+    },
+    emits: ['remove']
   };
   </script>
   

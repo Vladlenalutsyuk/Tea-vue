@@ -1,19 +1,36 @@
 <template>
   <div>
-    <Child @customEvent="handleCustomEvent" />
+    <User
+      v-for="user in users"
+      :key="user.id"
+      :id="user.id"
+      :name="user.name"
+      :surn="user.surn"
+      @remove="remove"
+    />
   </div>
 </template>
 
 <script>
-import Child from './components/Child.vue';  // Импортируем дочерний компонент
+import User from './components/User.vue';  // Импортируем дочерний компонент
 
 export default {
   components: {
-    Child
+    User
+  },
+  data() {
+    return {
+      users: [
+        { id: 1, name: 'name1', surn: 'surn1' },
+        { id: 2, name: 'name2', surn: 'surn2' },
+        { id: 3, name: 'name3', surn: 'surn3' }
+      ]
+    };
   },
   methods: {
-    handleCustomEvent() {
-      console.log('Событие customEvent было испущено!');
+    remove(id) {
+      // Удаление пользователя по id
+      this.users = this.users.filter(user => user.id !== id);
     }
   }
 };
