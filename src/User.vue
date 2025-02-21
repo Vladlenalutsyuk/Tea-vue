@@ -1,27 +1,32 @@
 <script>
 export default {
   props: {
-    items: Array,  // Ожидаем, что пропс items будет массивом
+    func1: {
+      type: Function,
+      required: true
+    },
+    func2: {
+      type: Function,
+      required: true
+    }
   },
+  methods: {
+    callFunc1() {
+      this.func1(); // Вызов функции 1
+    },
+    callFunc2() {
+      this.func2(); // Вызов функции 2
+    }
+  }
 };
 </script>
 
 <template>
   <div>
-    <p>Список элементов массива:</p>
-    <ul>
-      <li v-for="(item, index) in items" :key="index">{{ item }}</li>
-    </ul>
+    <!-- Кнопка для вызова первой функции -->
+    <button @click="callFunc1">Вызвать функцию 1</button>
+    
+    <!-- Кнопка для вызова второй функции -->
+    <button @click="callFunc2">Вызвать функцию 2</button>
   </div>
 </template>
-
-<style scoped>
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  padding: 5px 0;
-}
-</style>
